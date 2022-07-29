@@ -1,17 +1,20 @@
 <template>
-  <h1>Fazer Login</h1>
+  <div class="login-view">
+    <div class="card-form">
+      <h1 class="title">
+        Fazer Login
+      </h1>
 
-  <form @submit.prevent="handleSignIn">
-    <input type="text" v-model="email">
-    <input type="password" v-model="password">
-    <input type="submit" value="Fazer login">
-  </form>
+      <login-form @submit="handleSignIn" />
+    </div>
+  </div>
 </template>
 
-<script setup>
-import { ref } from "vue";
+<script setup lang="ts">
 import { useSessionStore } from "../stores/session"
-import { useRouter } from "vue-router";
+import { useRouter } from "vue-router"
+import LoginForm from "@/components/forms/LoginForm.vue"
+import type { Session } from "@/types/models/session"
 
 const sessionStore = useSessionStore()
 const router = useRouter()
@@ -20,13 +23,34 @@ sessionStore.$subscribe(() => {
   if (sessionStore.hasSession) router.push({ name: 'home' })
 })
 
-const email = ref('')
-const password = ref('')
-
-const handleSignIn = () => {
-  sessionStore.createSession({ email: email.value, password: password.value })
+const handleSignIn = (form: Session) => {
+  sessionStore.createSession({ email: form.email, password: form.password })
 }
 </script>
 
-<style>
+<style lang="scss">
+body {
+  background: #f9fafc;
+
+  .login-view {
+    display: flex;
+    justify-content: center;
+
+    .card-form {
+      width: 416px;
+      background: #FFFFFF;
+      padding: 40px 30px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+      .title {
+        text-align: center;
+        color: #5E6C84;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 28px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+}
 </style>
