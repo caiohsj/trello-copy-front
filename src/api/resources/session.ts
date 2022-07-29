@@ -1,5 +1,5 @@
 import { ApiService } from "@/api/apiService"
-import type { Session } from "@/types/models/session";
+import type { Session } from "@/types/models/session"
 
 export const SessionResource = {
   sign_in(session: Session) {

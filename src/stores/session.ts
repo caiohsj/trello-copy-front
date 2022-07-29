@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import { SessionResource } from "@/api/resources/session";
-import type { Session } from "@/types/models/session";
+import { SessionResource } from "@/api/resources/session"
+import type { Session } from "@/types/models/session"
 
 export const useSessionStore = defineStore({
   id: 'session',
