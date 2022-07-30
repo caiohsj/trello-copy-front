@@ -39,7 +39,7 @@ const showClass = computed(() => show.value ? 'show' : '')
   right: 20px;
   padding: 0px 12px;
   border-radius: 8px;
-  background: #000000BB;
+  background: #2d3436;
   color: #FFFFFF;
   opacity: 0;
   transition: opacity 0.3s;
@@ -55,7 +55,7 @@ const showClass = computed(() => show.value ? 'show' : '')
     fill: #4c9aff;
 
     .icon {
-      max-width: 28px;
+      width: 28px;
       margin-left: auto;
 
       &:hover {
