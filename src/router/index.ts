@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: '/cadastro',
       name: 'register',
-      component: () => import('@/views/RegisterView.vue')
+      component: () => import('@/views/UserRegisterView.vue')
     }
   ]
 })

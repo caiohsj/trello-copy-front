@@ -5,19 +5,19 @@
   >
     <input
       v-model="email"
-      placeholder="Insira o e-mail"
+      :placeholder="$t('components.forms.loginForm.placeholders.email')"
       type="text"
       class="text-field"
     />
     <input
       v-model="password"
-      placeholder="Inserir senha"
+      :placeholder="$t('components.forms.loginForm.placeholders.password')"
       type="password"
       class="text-field"
     />
     <input
       type="submit"
-      value="Fazer login"
+      :value="$t('components.forms.loginForm.buttons.login')"
       class="btn btn-primary"
     />
   </form>

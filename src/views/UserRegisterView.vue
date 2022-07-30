@@ -2,7 +2,7 @@
   <div class="register-view">
     <div class="card-form">
       <h1 class="title">
-        Fazer Cadastro
+        {{ $t('views.userRegisterView.cardForm.title') }}
       </h1>
 
       <register-form @submit="handleSignIn" />
@@ -11,7 +11,7 @@
         :to="{ name: 'signIn' }"
         class="link"
       >
-        Já possuo uma conta
+        {{ $t('views.userRegisterView.cardForm.linkToLogin') }}
       </router-link>
     </div>
   </div>
