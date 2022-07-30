@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { SessionResource } from "@/api/resources/session"
 import type { Session } from "@/types/models/session"
+import { useToastStore } from './toast'
 
 export const useSessionStore = defineStore({
   id: 'session',
@@ -17,7 +18,7 @@ export const useSessionStore = defineStore({
         const jsonResponse = JSON.stringify(response)
         this.$patch(state => state.session = jsonResponse)
         localStorage.setItem('session', jsonResponse)
-      })
+      }).catch(err => useToastStore().showToast(err))
     }
   }
 })
