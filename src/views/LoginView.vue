@@ -6,15 +6,22 @@
       </h1>
 
       <login-form @submit="handleSignIn" />
+
+      <router-link
+        :to="{ name: 'register' }"
+        class="link"
+      >
+        Criar uma conta
+      </router-link>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useSessionStore } from "../stores/session"
-import { useRouter } from "vue-router"
+import { useRouter, RouterLink } from "vue-router"
 import LoginForm from "@/components/forms/LoginForm.vue"
-import type { Session } from "@/types/models/session"
+import type { Session } from "@/types/models/Session"
 
 const sessionStore = useSessionStore()
 const router = useRouter()
