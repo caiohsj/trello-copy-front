@@ -18,7 +18,7 @@ export default {
             password: "Inserir senha",
           },
           buttons: {
-            login: "Fazer cadastro",
+            register: "Fazer cadastro",
           },
         },
       },

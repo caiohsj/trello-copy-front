@@ -2,24 +2,32 @@
   <form @submit.prevent="handleSubmit" class="form" autocomplete="on">
     <input
       v-model="name"
-      placeholder="Insira seu nome"
+      :placeholder="$t('components.forms.users.registerForm.placeholders.name')"
       type="text"
       class="text-field"
       autocomplete="name"
     />
     <input
       v-model="email"
-      placeholder="Insira o e-mail"
+      :placeholder="
+        $t('components.forms.users.registerForm.placeholders.email')
+      "
       type="email"
       class="text-field"
     />
     <input
       v-model="password"
-      placeholder="Inserir senha"
+      :placeholder="
+        $t('components.forms.users.registerForm.placeholders.password')
+      "
       type="password"
       class="text-field"
     />
-    <input type="submit" value="Fazer login" class="btn btn-primary" />
+    <input
+      type="submit"
+      :value="$t('components.forms.users.registerForm.buttons.register')"
+      class="btn btn-primary"
+    />
   </form>
 </template>
 
