@@ -2,37 +2,34 @@
   <div class="login-view">
     <div class="card-form">
       <h1 class="title">
-        {{ $t('views.loginView.cardForm.title') }}
+        {{ $t("views.loginView.cardForm.title") }}
       </h1>
 
       <login-form @submit="handleSignIn" />
 
-      <router-link
-        :to="{ name: 'register' }"
-        class="link"
-      >
-        {{ $t('views.loginView.cardForm.linkToRegister') }}
+      <router-link :to="{ name: 'register' }" class="link">
+        {{ $t("views.loginView.cardForm.linkToRegister") }}
       </router-link>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useSessionStore } from "../stores/session"
-import { useRouter, RouterLink } from "vue-router"
-import LoginForm from "@/components/forms/LoginForm.vue"
-import type { Session } from "@/types/models/Session"
+import { useSessionStore } from "../stores/session";
+import { useRouter, RouterLink } from "vue-router";
+import LoginForm from "@/components/forms/LoginForm.vue";
+import type { Session } from "@/types/models/Session";
 
-const sessionStore = useSessionStore()
-const router = useRouter()
+const sessionStore = useSessionStore();
+const router = useRouter();
 
 sessionStore.$subscribe(() => {
-  if (sessionStore.hasSession) router.push({ name: 'home' })
-})
+  if (sessionStore.hasSession) router.push({ name: "home" });
+});
 
 const handleSignIn = (form: Session) => {
-  sessionStore.createSession({ email: form.email, password: form.password })
-}
+  sessionStore.createSession({ email: form.email, password: form.password });
+};
 </script>
 
 <style lang="scss">
@@ -45,13 +42,13 @@ body {
 
     .card-form {
       width: 416px;
-      background: #FFFFFF;
+      background: #ffffff;
       padding: 40px 30px;
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
       .title {
         text-align: center;
-        color: #5E6C84;
+        color: #5e6c84;
         font-size: 16px;
         font-weight: bold;
         line-height: 28px;

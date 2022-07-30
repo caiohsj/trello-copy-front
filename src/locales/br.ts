@@ -3,39 +3,39 @@ export default {
     forms: {
       loginForm: {
         placeholders: {
-          email: 'Insira o e-mail',
-          password: 'Inserir senha'
+          email: "Insira o e-mail",
+          password: "Inserir senha",
         },
         buttons: {
-          login: 'Fazer login'
-        }
+          login: "Fazer login",
+        },
       },
       users: {
         registerForm: {
           placeholders: {
-            name: 'Insira seu nome',
-            email: 'Insira o e-mail',
-            password: 'Inserir senha'
+            name: "Insira seu nome",
+            email: "Insira o e-mail",
+            password: "Inserir senha",
           },
           buttons: {
-            login: 'Fazer cadastro'
-          }
-        }
-      }
-    }
+            login: "Fazer cadastro",
+          },
+        },
+      },
+    },
   },
   views: {
     loginView: {
       cardForm: {
-        title: 'Fazer Login',
-        linkToRegister: 'Criar uma conta'
-      }
+        title: "Fazer Login",
+        linkToRegister: "Criar uma conta",
+      },
     },
     userRegisterView: {
       cardForm: {
-        title: 'Fazer Cadastro',
-        linkToLogin: 'Já possuo uma conta'
-      }
-    }
-  }
-}
+        title: "Fazer Cadastro",
+        linkToLogin: "Já possuo uma conta",
+      },
+    },
+  },
+};

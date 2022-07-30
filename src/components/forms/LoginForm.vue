@@ -1,8 +1,5 @@
 <template>
-  <form
-    @submit.prevent="handleSubmit"
-    class="form"
-  >
+  <form @submit.prevent="handleSubmit" class="form">
     <input
       v-model="email"
       :placeholder="$t('components.forms.loginForm.placeholders.email')"
@@ -24,14 +21,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from "vue";
 
-const emit = defineEmits(['submit'])
+const emit = defineEmits(["submit"]);
 
-const email = ref('')
-const password = ref('')
+const email = ref("");
+const password = ref("");
 
 const handleSubmit = () => {
-  emit('submit', { email: email.value, password: password.value })
-}
+  emit("submit", { email: email.value, password: password.value });
+};
 </script>

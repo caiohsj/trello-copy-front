@@ -1,40 +1,40 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 import { useSessionStore } from "@/stores/session";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       },
-      component: () => import('@/views/HomeView.vue')
+      component: () => import("@/views/HomeView.vue"),
     },
     {
-      path: '/entrar',
-      name: 'signIn',
-      component: () => import('@/views/LoginView.vue')
+      path: "/entrar",
+      name: "signIn",
+      component: () => import("@/views/LoginView.vue"),
     },
     {
-      path: '/cadastro',
-      name: 'register',
-      component: () => import('@/views/UserRegisterView.vue')
-    }
-  ]
-})
+      path: "/cadastro",
+      name: "register",
+      component: () => import("@/views/UserRegisterView.vue"),
+    },
+  ],
+});
 
-router.beforeEach((to, from) => {
-  const sessionStore = useSessionStore()
+router.beforeEach((to) => {
+  const sessionStore = useSessionStore();
 
   if (to.meta.requiresAuth && !sessionStore.hasSession) {
-    return { name: 'signIn' }
+    return { name: "signIn" };
   }
 
-  if (to.name == 'signIn' && sessionStore.hasSession) {
-    return { name: 'home' }
+  if (to.name == "signIn" && sessionStore.hasSession) {
+    return { name: "home" };
   }
-})
+});
 
-export default router
+export default router;

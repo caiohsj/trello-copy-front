@@ -1,13 +1,13 @@
-import br from './br'
+import br from "./br";
 
 const messages = {
-  "pt-BR": br
-}
+  "pt-BR": br,
+};
 
 const i18n = {
   locale: navigator.language,
-  fallbackLocale: 'pt-BR',
-  messages
-}
+  fallbackLocale: "pt-BR",
+  messages,
+};
 
-export default i18n
+export default i18n;
