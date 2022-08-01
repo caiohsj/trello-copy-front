@@ -6,6 +6,7 @@
       type="text"
       class="text-field"
       autocomplete="name"
+      id="name"
     />
     <input
       v-model="email"
@@ -14,6 +15,7 @@
       "
       type="email"
       class="text-field"
+      id="email"
     />
     <input
       v-model="password"
@@ -22,11 +24,13 @@
       "
       type="password"
       class="text-field"
+      id="password"
     />
     <input
       type="submit"
       :value="$t('components.forms.users.registerForm.buttons.register')"
       class="btn btn-primary"
+      id="btn_register"
     />
   </form>
 </template>
@@ -40,7 +44,7 @@ const name = ref("");
 const email = ref("");
 const password = ref("");
 
-const handleSubmit = () => {
+const handleSubmit = (): void => {
   emit("submit", {
     name: name.value,
     email: email.value,

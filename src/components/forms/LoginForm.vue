@@ -5,17 +5,20 @@
       :placeholder="$t('components.forms.loginForm.placeholders.email')"
       type="text"
       class="text-field"
+      id="email"
     />
     <input
       v-model="password"
       :placeholder="$t('components.forms.loginForm.placeholders.password')"
       type="password"
       class="text-field"
+      id="password"
     />
     <input
       type="submit"
       :value="$t('components.forms.loginForm.buttons.login')"
       class="btn btn-primary"
+      id="btn_login"
     />
   </form>
 </template>
@@ -28,7 +31,7 @@ const emit = defineEmits(["submit"]);
 const email = ref("");
 const password = ref("");
 
-const handleSubmit = () => {
+const handleSubmit = (): void => {
   emit("submit", { email: email.value, password: password.value });
 };
 </script>
