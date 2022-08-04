@@ -1,7 +1,9 @@
 export interface Http {
   baseUrl: string;
-  get: (endpoint: string, query?: BodyInit) => Promise<JSON>;
-  post: (endpoint: string, body?: object) => Promise<JSON>;
-  put: (endpoint: string, body?: object) => Promise<JSON>;
-  delete: (endpoint: string) => Promise<JSON>;
+  headers: HeadersInit;
+  authorization: () => object;
+  get: (endpoint: string, query?: BodyInit) => Promise<any>;
+  post: (endpoint: string, body?: object) => Promise<any>;
+  put: (endpoint: string, body?: object) => Promise<any>;
+  delete: (endpoint: string) => Promise<any>;
 }
