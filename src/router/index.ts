@@ -30,7 +30,7 @@ const router = createRouter({
         requiresAuth: true,
         requiresNav: true,
       },
-      component: () => import("@/views/HomeView.vue"),
+      component: () => import("@/views/BoardsView.vue"),
     },
   ],
 });
