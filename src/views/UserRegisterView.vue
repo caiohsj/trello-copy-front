@@ -16,18 +16,11 @@
 
 <script setup lang="ts">
 import { useUserStore } from "../stores/user";
-import { useSessionStore } from "../stores/session";
-import { useRouter, RouterLink } from "vue-router";
+import { RouterLink } from "vue-router";
 import RegisterForm from "@/components/forms/users/RegisterForm.vue";
 import type { User } from "@/types/models/User";
 
-const sessionStore = useSessionStore();
 const userStore = useUserStore();
-const router = useRouter();
-
-sessionStore.$subscribe(() => {
-  if (sessionStore.hasSession) router.push({ name: "home" });
-});
 
 const handleSignIn = (user: User) => {
   userStore.createUser(user);

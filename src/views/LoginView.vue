@@ -16,16 +16,11 @@
 
 <script setup lang="ts">
 import { useSessionStore } from "../stores/session";
-import { useRouter, RouterLink } from "vue-router";
+import { RouterLink } from "vue-router";
 import LoginForm from "@/components/forms/LoginForm.vue";
 import type { Session } from "@/types/models/Session";
 
 const sessionStore = useSessionStore();
-const router = useRouter();
-
-sessionStore.$subscribe(() => {
-  if (sessionStore.hasSession) router.push({ name: "home" });
-});
 
 const handleSignIn = (form: Session) => {
   sessionStore.createSession({ email: form.email, password: form.password });
@@ -39,6 +34,7 @@ body {
   .login-view {
     display: flex;
     justify-content: center;
+    align-items: center;
 
     .card-form {
       width: 416px;
