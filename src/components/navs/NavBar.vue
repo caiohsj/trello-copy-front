@@ -1,12 +1,14 @@
 <template>
   <nav v-if="props.show" class="nav-bar">
-    <router-link :to="{ name: 'home' }" class="title">Trello</router-link>
+    <router-link :to="{ name: 'home' }" class="title">
+      {{ $t("components.navs.navBar.title") }}
+    </router-link>
 
     <div class="menu">
       <ul class="menu-items">
         <li class="item">
           <router-link :to="{ name: 'boards' }" class="menu-link">
-            Quadros
+            {{ $t("components.navs.navBar.menuItems.boards") }}
           </router-link>
         </li>
       </ul>
@@ -15,7 +17,9 @@
         <img :src="placeholder" class="avatar" />
 
         <div class="actions">
-          <a class="action" @click="handleLogout">Sair</a>
+          <a class="action" @click="handleLogout">
+            {{ $t("components.navs.navBar.profile.actions.logout") }}
+          </a>
         </div>
       </a>
     </div>

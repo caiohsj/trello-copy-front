@@ -23,6 +23,19 @@ export default {
         },
       },
     },
+    navs: {
+      navBar: {
+        title: "Trello",
+        menuItems: {
+          boards: "Quadros",
+        },
+        profile: {
+          actions: {
+            logout: "Sair",
+          },
+        },
+      },
+    },
   },
   views: {
     loginView: {
@@ -36,6 +49,9 @@ export default {
         title: "Fazer Cadastro",
         linkToLogin: "Já possuo uma conta",
       },
+    },
+    homeView: {
+      title: "Gerencie seus projetos de forma simples",
     },
   },
 };

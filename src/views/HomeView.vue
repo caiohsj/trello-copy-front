@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>Gerencie seus projetos de forma simples</h1>
+    <h1>{{ $t("views.homeView.title") }}</h1>
   </main>
 </template>
 
