@@ -5,14 +5,6 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
-      name: "home",
-      meta: {
-        requiresAuth: true,
-      },
-      component: () => import("@/views/HomeView.vue"),
-    },
-    {
       path: "/entrar",
       name: "signIn",
       component: () => import("@/views/LoginView.vue"),
@@ -21,6 +13,24 @@ const router = createRouter({
       path: "/cadastro",
       name: "register",
       component: () => import("@/views/UserRegisterView.vue"),
+    },
+    {
+      path: "/",
+      name: "home",
+      meta: {
+        requiresAuth: true,
+        requiresNav: true,
+      },
+      component: () => import("@/views/HomeView.vue"),
+    },
+    {
+      path: "/quadros",
+      name: "boards",
+      meta: {
+        requiresAuth: true,
+        requiresNav: true,
+      },
+      component: () => import("@/views/HomeView.vue"),
     },
   ],
 });

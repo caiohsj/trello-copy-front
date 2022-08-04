@@ -22,5 +22,9 @@ export const useSessionStore = defineStore({
         })
         .catch((err) => useToastStore().showToast(err));
     },
+    destroySession() {
+      this.$patch((state) => (state.session = ""));
+      localStorage.removeItem("session");
+    },
   },
 });
