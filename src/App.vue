@@ -1,7 +1,9 @@
 <template>
   <nav-bar :show="needNav" @logout="handleLogout" />
   <toast />
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <script setup lang="ts">
