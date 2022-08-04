@@ -1,5 +1,5 @@
 <template>
-  <div :class="['toast', showClass]">
+  <div :class="['toast', showClass]" v-if="show">
     <div class="container-icon">
       <icon-close @click="hideToast" class="icon" />
     </div>
