@@ -3,7 +3,9 @@ export interface Http {
   headers: HeadersInit;
   authorization: () => object;
   get: (endpoint: string, query?: BodyInit) => Promise<any>;
-  post: (endpoint: string, body?: object) => Promise<any>;
-  put: (endpoint: string, body?: object) => Promise<any>;
+  post: (endpoint: string, body: BodyInit) => Promise<any>;
+  postFormData: (endpoint: string, body: FormData) => Promise<any>;
+  put: (endpoint: string, body: BodyInit) => Promise<any>;
+  putFormData: (endpoint: string, body: FormData) => Promise<any>;
   delete: (endpoint: string) => Promise<any>;
 }

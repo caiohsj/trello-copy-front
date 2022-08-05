@@ -32,7 +32,7 @@ export const ApiService: Http = {
       reject(json);
     });
   },
-  async post(endpoint: string, params?: object) {
+  async post(endpoint: string, params: BodyInit) {
     const response = await fetch(this.baseUrl + endpoint, {
       method: "POST",
       body: JSON.stringify(params),
@@ -47,12 +47,40 @@ export const ApiService: Http = {
       reject(json);
     });
   },
-  async put(endpoint: string, params?: object) {
+  async postFormData(endpoint: string, params: FormData) {
+    const response = await fetch(this.baseUrl + endpoint, {
+      method: "POST",
+      body: params,
+      headers: {
+        ...this.authorization(),
+      },
+    });
+    const json = await response.json();
+    return new Promise<any>((resolve, reject) => {
+      if (response.ok) resolve(json);
+      reject(json);
+    });
+  },
+  async put(endpoint: string, params: BodyInit) {
     const response = await fetch(this.baseUrl + endpoint, {
       method: "PUT",
       body: JSON.stringify(params),
       headers: {
         ...this.headers,
+        ...this.authorization(),
+      },
+    });
+    const json = await response.json();
+    return new Promise<any>((resolve, reject) => {
+      if (response.ok) resolve(json);
+      reject(json);
+    });
+  },
+  async putFormData(endpoint: string, params: FormData) {
+    const response = await fetch(this.baseUrl + endpoint, {
+      method: "PUT",
+      body: params,
+      headers: {
         ...this.authorization(),
       },
     });
