@@ -22,6 +22,18 @@ export default {
           },
         },
       },
+      boards: {
+        registerForm: {
+          placeholders: {
+            name: "Insira o nome do quadro",
+            backgroundColor: "Insira a cor de fundo do quadro",
+            backGroundPhoto: "Imagem de fundo do quadro",
+          },
+          buttons: {
+            register: "Criar quadro",
+          },
+        },
+      },
     },
     navs: {
       navBar: {
