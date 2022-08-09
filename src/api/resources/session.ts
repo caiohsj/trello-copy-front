@@ -1,8 +1,8 @@
-import { ApiService } from "@/api/apiService";
-import type { Session } from "@/types/models/Session";
+import type { CreateSessionParams } from "@/types/stores/CreateSessionParams";
+import http from "@/api/http";
 
 export const SessionResource = {
-  sign_in(session: Session) {
-    return ApiService.post("/users/sign_in", session);
+  sign_in(session: CreateSessionParams) {
+    return http.post("/users/sign_in", session);
   },
 };

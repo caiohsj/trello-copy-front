@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { SessionResource } from "@/api/resources/session";
-import type { Session } from "@/types/models/Session";
 import { useToastStore } from "./toast";
+import type { CreateSessionParams } from "@/types/stores/CreateSessionParams";
 
 export const useSessionStore = defineStore({
   id: "session",
@@ -13,7 +13,7 @@ export const useSessionStore = defineStore({
     hasSession: (state) => (state.session ? true : false),
   },
   actions: {
-    createSession(session: Session) {
+    createSession(session: CreateSessionParams) {
       SessionResource.sign_in(session)
         .then((response) => {
           const jsonResponse = JSON.stringify(response);
