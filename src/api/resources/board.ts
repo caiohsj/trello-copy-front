@@ -1,10 +1,10 @@
-import { ApiService } from "@/api/apiService";
+import http from "@/api/http";
 
 export const BoardResource = {
   create(board: FormData) {
-    return ApiService.postFormData("/api/v1/boards", board);
+    return http.post("/api/v1/boards", board);
   },
   index() {
-    return ApiService.get("/api/v1/boards");
+    return http.get("/api/v1/boards");
   },
 };
