@@ -20,7 +20,6 @@ import RegisterForm from "@/components/forms/boards/RegisterForm.vue";
 import type { Board } from "@/types/models/Board";
 
 const background = (board: Board) => {
-  console.log(board);
   if (board.background_photo.url) {
     return `background-image: url(http://localhost:3000${board.background_photo.url});`;
   }
