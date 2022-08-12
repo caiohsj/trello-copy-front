@@ -6,7 +6,7 @@
 
     <div class="menu">
       <ul class="menu-items">
-        <li class="item">
+        <li class="item flex">
           <router-link :to="{ name: 'boards' }" class="menu-link">
             {{ $t("components.navs.navBar.menuItems.boards") }}
           </router-link>
