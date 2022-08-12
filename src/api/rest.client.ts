@@ -82,6 +82,9 @@ export class RestClient implements Rest {
       return JSON.stringify(body);
     }
 
+    this.headers.delete("Content-Type");
+    this.headers.delete("Accept");
+
     return body;
   }
 }
