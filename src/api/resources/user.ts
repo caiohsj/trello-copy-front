@@ -3,6 +3,6 @@ import http from "@/api/http";
 
 export const UserResource = {
   create(user: User) {
-    return http.post("/users", user);
+    return http.post("/api/v1/users", user);
   },
 };
