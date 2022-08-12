@@ -3,6 +3,7 @@ import { BoardResource } from "@/api/resources/board";
 import type { Board } from "@/types/models/Board";
 import { useToastStore } from "./toast";
 import type { StateBoard } from "@/types/stores/StateBoard";
+import type { Column } from "@/types/models/Column";
 
 export const useBoardStore = defineStore({
   id: "board",
@@ -14,6 +15,7 @@ export const useBoardStore = defineStore({
       background_photo: {
         url: "",
       },
+      columns: new Array<Column>(),
     },
     boards: new Array<Board>(),
   }),
