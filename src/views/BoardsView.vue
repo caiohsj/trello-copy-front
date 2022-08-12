@@ -7,6 +7,7 @@
         :key="board.id"
         class="board"
         :style="background(board)"
+        @click="navigateToBoard(board)"
       >
         {{ board.name }}
       </div>
@@ -18,6 +19,7 @@
 import { useBoardStore } from "@/stores/board";
 import RegisterForm from "@/components/forms/boards/RegisterForm.vue";
 import type { Board } from "@/types/models/Board";
+import { useRouter } from "vue-router";
 
 const background = (board: Board) => {
   if (board.background_photo.url) {
@@ -33,6 +35,12 @@ boardStore.fetchBoards();
 
 const handleSubmit = (params: FormData) => {
   boardStore.createBoard(params);
+};
+
+const router = useRouter();
+
+const navigateToBoard = (board: Board) => {
+  router.push({ name: "board", params: { id: board.id } });
 };
 </script>
 

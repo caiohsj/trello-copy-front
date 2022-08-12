@@ -32,6 +32,15 @@ const router = createRouter({
       },
       component: () => import("@/views/BoardsView.vue"),
     },
+    {
+      path: "/quadros/:id",
+      name: "board",
+      meta: {
+        requiresAuth: true,
+        requiresNav: true,
+      },
+      component: () => import("@/views/BoardView.vue"),
+    },
   ],
 });
 

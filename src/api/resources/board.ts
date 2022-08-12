@@ -7,4 +7,7 @@ export const BoardResource = {
   index() {
     return http.get("/api/v1/boards");
   },
+  show(id: number) {
+    return http.get(`/api/v1/boards/${id}`);
+  },
 };
