@@ -7,19 +7,33 @@
     </button>
 
     <section>
-      <div class="bg-gray-200 rounded-md px-4">
+      <div
+        class="bg-gray-200 rounded-md px-4 pb-2 max-w-xs"
+        v-for="column in boardStore.getBoard.columns"
+        :key="column.id"
+      >
         <input
-          class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none"
+          class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
           type="text"
           id="inputNameColumn"
-          value="coluna"
+          v-model="column.title"
         />
 
-        <div>
-          Card 1
+        <div
+          class="p-2 mb-2 shadow-lg"
+          v-for="card in column.cards"
+          :key="card.id"
+        >
+          {{ card.title }}
         </div>
       </div>
     </section>
+
+    <!-- <base-modal>
+      <div class="w-60 h-60 bg-purple-500">
+        
+      </div>
+    </base-modal> -->
   </div>
 </template>
 
@@ -27,6 +41,7 @@
 import { useBoardStore } from "@/stores/board";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+// import BaseModal from "@/components/modals/BaseModal.vue";
 
 const boardStore = useBoardStore();
 const route = useRoute();
