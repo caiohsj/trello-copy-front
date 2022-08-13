@@ -1,39 +1,42 @@
 <template>
-  <div class="h-screen p-4" v-if="boardStore.getBoard" :style="background">
-    <button
-      class="p-2 mb-4 bg-emerald-500 rounded-md text-gray-200 font-bold hover:opacity-75 transition-all"
-    >
-      Adicionar coluna
-    </button>
-
-    <section>
-      <div
-        class="bg-gray-200 rounded-md px-4 pb-2 max-w-xs"
-        v-for="column in boardStore.getBoard.columns"
-        :key="column.id"
+  <div
+    v-if="boardStore.getBoard"
+    :style="background"
+    style="height: calc(100vh - 52px)"
+    class="w-full relative overflow-x-auto"
+  >
+    <div class="absolute bottom-0 top-0 p-4">
+      <button
+        @click="addColumn"
+        class="p-2 mb-4 bg-emerald-500 rounded-md text-gray-200 font-bold hover:opacity-75 transition-all"
       >
-        <input
-          class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
-          type="text"
-          id="inputNameColumn"
-          v-model="column.title"
-        />
+        Adicionar coluna
+      </button>
 
+      <section class="flex gap-2">
         <div
-          class="p-2 mb-2 shadow-lg"
-          v-for="card in column.cards"
-          :key="card.id"
+          class="bg-gray-200 rounded-md px-4 pb-2"
+          style="min-width: 300px"
+          v-for="column in boardStore.getBoard.columns"
+          :key="column.id"
         >
-          {{ card.title }}
-        </div>
-      </div>
-    </section>
+          <input
+            class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
+            type="text"
+            id="inputNameColumn"
+            v-model="column.title"
+          />
 
-    <!-- <base-modal>
-      <div class="w-60 h-60 bg-purple-500">
-        
-      </div>
-    </base-modal> -->
+          <div
+            class="p-2 mb-2 shadow-lg"
+            v-for="card in column.cards"
+            :key="card.id"
+          >
+            {{ card.title }}
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -41,7 +44,6 @@
 import { useBoardStore } from "@/stores/board";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-// import BaseModal from "@/components/modals/BaseModal.vue";
 
 const boardStore = useBoardStore();
 const route = useRoute();
@@ -57,4 +59,12 @@ const background = computed(() => {
 
   return `background: ${boardStore.getBoard.background_color};`;
 });
+
+const addColumn = () => {
+  boardStore.$state.board.columns.push({
+    id: 0,
+    title: "Digite aqui o nome da coluna",
+    cards: [],
+  });
+};
 </script>
