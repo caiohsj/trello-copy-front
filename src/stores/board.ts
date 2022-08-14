@@ -46,5 +46,8 @@ export const useBoardStore = defineStore({
         })
         .catch((err) => useToastStore().showToast(err));
     },
+    setBoardColumn(index: number, column: Column) {
+      this.$state.board.columns[index] = column;
+    },
   },
 });

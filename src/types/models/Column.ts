@@ -4,4 +4,5 @@ export interface Column {
   id: number;
   title: string;
   cards: Card[];
+  board_id: number;
 }
