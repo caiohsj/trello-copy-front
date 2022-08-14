@@ -13,7 +13,7 @@
           :key="column.id"
         >
           <input
-            @keyup.enter="handleSaveColumn(column, index)"
+            @keyup.enter="handleSaveColumn($event, column, index)"
             v-model="column.title"
             class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
             type="text"
@@ -66,7 +66,8 @@ const addColumn = () => {
   boardStore.addColumnToBoard();
 };
 
-const handleSaveColumn = (column: Column, index: number) => {
+const handleSaveColumn = (e: any, column: Column, index: number) => {
+  e.target.blur();
   columnStore.saveColumn(column, index);
 };
 </script>
