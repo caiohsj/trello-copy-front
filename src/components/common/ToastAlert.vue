@@ -25,7 +25,7 @@ const showClass = computed(() => (show.value ? "show" : ""));
 
 <style lang="scss" scoped>
 .toast {
-  position: absolute;
+  position: fixed;
   max-width: 360px;
   top: 20px;
   right: 20px;
@@ -35,6 +35,11 @@ const showClass = computed(() => (show.value ? "show" : ""));
   color: #ffffff;
   opacity: 0;
   transition: opacity 0.3s;
+  z-index: 1;
+
+  p {
+    word-wrap: break-word;
+  }
 
   &.show {
     opacity: 1;
