@@ -63,12 +63,7 @@ const background = computed(() => {
 });
 
 const addColumn = () => {
-  boardStore.$state.board.columns.push({
-    id: 0,
-    title: "Digite aqui o nome da coluna",
-    cards: [],
-    board_id: boardStore.getBoard.id,
-  });
+  boardStore.addColumnToBoard();
 };
 
 const handleSaveColumn = (column: Column, index: number) => {

@@ -66,4 +66,11 @@ export default {
       title: "Gerencie seus projetos de forma simples",
     },
   },
+  stores: {
+    board: {
+      column: {
+        name: "Digite aqui o nome da coluna",
+      },
+    },
+  },
 };

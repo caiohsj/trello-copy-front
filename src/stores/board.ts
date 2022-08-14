@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import { BoardResource } from "@/api/resources/board";
 import type { Board } from "@/types/models/Board";
+import type { Column } from "@/types/models/Column";
 import { useToastStore } from "./toast";
 import type { StateBoard } from "@/types/stores/StateBoard";
-import type { Column } from "@/types/models/Column";
+import i18n from "@/locales";
 
 export const useBoardStore = defineStore({
   id: "board",
@@ -45,6 +46,16 @@ export const useBoardStore = defineStore({
           this.$patch((state) => (state.board = response));
         })
         .catch((err) => useToastStore().showToast(err));
+    },
+    addColumnToBoard() {
+      this.$patch((state) => {
+        state.board.columns.push({
+          id: 0,
+          title: i18n.global.t("stores.board.column.name"),
+          cards: [],
+          board_id: state.board.id,
+        });
+      });
     },
     setBoardColumn(index: number, column: Column) {
       this.$state.board.columns[index] = column;
