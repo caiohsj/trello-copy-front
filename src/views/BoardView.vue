@@ -35,7 +35,7 @@
         </div>
         <button
           @click="addColumn"
-          class="p-2 mb-4 bg-emerald-500 rounded-md text-gray-200 font-bold hover:opacity-75 transition-all"
+          class="p-2 mb-4 bg-emerald-500 rounded-md text-gray-200 font-bold hover:opacity-75 transition-all h-fit"
         >
           +
         </button>
