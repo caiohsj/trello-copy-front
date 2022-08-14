@@ -69,7 +69,10 @@ export default {
   stores: {
     board: {
       column: {
-        name: "Digite aqui o nome da coluna",
+        title: "Digite aqui o nome da coluna",
+      },
+      card: {
+        title: "Novo cartão da coluna {column}",
       },
     },
   },

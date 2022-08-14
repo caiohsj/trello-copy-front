@@ -7,13 +7,12 @@
     <div class="absolute bottom-0 top-0 p-4">
       <section class="flex gap-2">
         <div
-          class="bg-gray-200 rounded-md px-4 pb-2"
-          style="min-width: 300px"
-          v-for="(column, index) in boardStore.getBoard.columns"
+          class="column bg-gray-200 rounded-md px-4 pb-2"
+          v-for="(column, indexColumn) in boardStore.getBoard.columns"
           :key="column.id"
         >
           <input
-            @keyup.enter="handleSaveColumn($event, column, index)"
+            @keyup.enter="handleSaveColumn($event, column, indexColumn)"
             v-model="column.title"
             class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
             type="text"
@@ -27,6 +26,12 @@
           >
             {{ card.title }}
           </div>
+          <button
+            @click="addCard(indexColumn)"
+            class="pl-2 w-full text-left hover:bg-slate-600 hover:text-white rounded-md"
+          >
+            + Adicionar cartão
+          </button>
         </div>
         <button
           @click="addColumn"
@@ -66,6 +71,10 @@ const addColumn = () => {
   boardStore.addColumnToBoard();
 };
 
+const addCard = (indexColumn: number) => {
+  boardStore.addCardToColumn(indexColumn);
+};
+
 const handleSaveColumn = (e: any, column: Column, index: number) => {
   e.target.blur();
   columnStore.saveColumn(column, index);
@@ -75,5 +84,10 @@ const handleSaveColumn = (e: any, column: Column, index: number) => {
 <style lang="scss">
 .board-view {
   height: calc(100vh - 52px);
+
+  .column {
+    min-width: 300px;
+    height: fit-content;
+  }
 }
 </style>
