@@ -19,13 +19,12 @@
             id="inputNameColumn"
           />
 
-          <div
-            class="p-2 mb-2 shadow-lg"
+          <card-column
             v-for="card in column.cards"
             :key="card.id"
-          >
-            {{ card.title }}
-          </div>
+            :item="card"
+          />
+
           <button
             @click="addCard(indexColumn)"
             class="pl-2 w-full text-left hover:bg-slate-600 hover:text-white rounded-md"
@@ -50,6 +49,7 @@ import { useColumnStore } from "@/stores/column";
 import type { Column } from "@/types/models/Column";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+import CardColumn from "@/components/CardColumn.vue";
 
 const boardStore = useBoardStore();
 const columnStore = useColumnStore();
