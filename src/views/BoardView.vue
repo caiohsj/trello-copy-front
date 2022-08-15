@@ -87,6 +87,7 @@ const handleSaveColumn = (e: any, column: Column, index: number) => {
 
   .column {
     min-width: 300px;
+    max-width: 320px;
     height: fit-content;
   }
 }
