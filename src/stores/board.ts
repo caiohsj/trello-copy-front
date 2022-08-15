@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { BoardResource } from "@/api/resources/board";
 import type { Board } from "@/types/models/Board";
 import type { Column } from "@/types/models/Column";
+import type { Card } from "@/types/models/Card";
 import { useToastStore } from "./toast";
 import type { StateBoard } from "@/types/stores/StateBoard";
 import i18n from "@/locales";
@@ -61,7 +62,9 @@ export const useBoardStore = defineStore({
       this.$patch((state) => {
         state.board.columns[indexColumn].cards.push({
           id: 0,
-          title: i18n.global.t("stores.board.card.title", { column: state.board.columns[indexColumn].title }),
+          title: i18n.global.t("stores.board.card.title", {
+            column: state.board.columns[indexColumn].title,
+          }),
           description: "",
           column_id: state.board.columns[indexColumn].id,
         });
@@ -69,6 +72,9 @@ export const useBoardStore = defineStore({
     },
     setBoardColumn(index: number, column: Column) {
       this.$state.board.columns[index] = column;
+    },
+    setColumnCard(indexColumn: number, indexCard: number, card: Card) {
+      this.$state.board.columns[indexColumn].cards[indexCard] = card;
     },
   },
 });
