@@ -20,6 +20,7 @@
           />
 
           <card-column
+            @clicked="cardColumnClicked"
             v-for="card in column.cards"
             :key="card.id"
             :item="card"
@@ -40,19 +41,25 @@
         </button>
       </section>
     </div>
+
+    <card-modal />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useBoardStore } from "@/stores/board";
 import { useColumnStore } from "@/stores/column";
+import { useCardStore } from "@/stores/card";
 import type { Column } from "@/types/models/Column";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import CardColumn from "@/components/CardColumn.vue";
+import CardModal from "@/components/modals/CardModal.vue";
+import type { Card } from "@/types/models/Card";
 
 const boardStore = useBoardStore();
 const columnStore = useColumnStore();
+const cardStore = useCardStore();
 const route = useRoute();
 
 boardStore.fetchBoard(Number(route.params.id));
@@ -78,6 +85,11 @@ const addCard = (indexColumn: number) => {
 const handleSaveColumn = (e: any, column: Column, index: number) => {
   e.target.blur();
   columnStore.saveColumn(column, index);
+};
+
+const cardColumnClicked = (card: Card) => {
+  cardStore.setCard(card);
+  cardStore.setShowCardModal(true);
 };
 </script>
 
