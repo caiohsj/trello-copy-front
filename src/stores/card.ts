@@ -15,21 +15,30 @@ export const useCardStore = defineStore({
       column_id: 0,
     },
     showCardModal: false,
+    indexCard: 0,
+    indexColumn: 0,
   }),
   getters: {
     getCard: (state) => state.card,
   },
   actions: {
-    saveCard(card: Card, indexCard: number, indexColumn: number) {
-      if (card.id == 0) {
-        CardResource.create(card)
+    saveCard() {
+      if (this.card.id == 0) {
+        CardResource.create(this.card)
           .then((response) => {
-            useBoardStore().setColumnCard(indexColumn, indexCard, response);
+            useBoardStore().setColumnCard(
+              this.indexColumn,
+              this.indexCard,
+              response
+            );
+            this.setShowCardModal(false);
           })
           .catch((err) => useToastStore().showToast(err));
       } else {
-        CardResource.update(card)
-          .then()
+        CardResource.update(this.card)
+          .then(() => {
+            this.setShowCardModal(false);
+          })
           .catch((err) => {
             useToastStore().showToast(err);
           });
@@ -47,6 +56,12 @@ export const useCardStore = defineStore({
     },
     setCard(card: Card) {
       this.card = card;
+    },
+    setIndexCard(index: number) {
+      this.indexCard = index;
+    },
+    setIndexColumn(index: number) {
+      this.indexColumn = index;
     },
   },
 });

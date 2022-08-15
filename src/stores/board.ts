@@ -52,7 +52,7 @@ export const useBoardStore = defineStore({
       this.$patch((state) => {
         state.board.columns.push({
           id: 0,
-          title: i18n.global.t("stores.board.column.title"),
+          title: "",
           cards: [],
           board_id: state.board.id,
         });
@@ -62,9 +62,7 @@ export const useBoardStore = defineStore({
       this.$patch((state) => {
         state.board.columns[indexColumn].cards.push({
           id: 0,
-          title: i18n.global.t("stores.board.card.title", {
-            column: state.board.columns[indexColumn].title,
-          }),
+          title: "",
           description: "",
           column_id: state.board.columns[indexColumn].id,
         });

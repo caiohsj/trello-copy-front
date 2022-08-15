@@ -20,8 +20,8 @@
           />
 
           <card-column
-            @clicked="cardColumnClicked"
-            v-for="card in column.cards"
+            v-for="(card, indexCard) in column.cards"
+            @clicked="cardColumnClicked(card, indexCard, indexColumn)"
             :key="card.id"
             :item="card"
           />
@@ -87,8 +87,10 @@ const handleSaveColumn = (e: any, column: Column, index: number) => {
   columnStore.saveColumn(column, index);
 };
 
-const cardColumnClicked = (card: Card) => {
+const cardColumnClicked = (card: Card, indexCard: number, indexColumn: number) => {
   cardStore.setCard(card);
+  cardStore.setIndexCard(indexCard);
+  cardStore.setIndexColumn(indexColumn);
   cardStore.setShowCardModal(true);
 };
 </script>
