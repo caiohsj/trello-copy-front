@@ -1,6 +1,7 @@
 <template>
   <div
     @click="emitClicked"
+    id="content_card_title"
     class="p-2 mb-2 shadow-lg cursor-pointer bg-gray-50 rounded-md mt-2 hover:bg-gray-300"
   >
     <div
