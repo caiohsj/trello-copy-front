@@ -1,12 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import i18n from "@/locales";
-import { createI18n } from "vue-i18n";
 import RegisterForm from "@/components/forms/users/RegisterForm.vue";
 
 describe("RegisterForm component", () => {
   const wrapper = mount(RegisterForm, {
-    global: { plugins: [createI18n(i18n)] },
+    global: { plugins: [i18n] },
   });
   const form = wrapper.find(".form");
   const inputName = wrapper.find("#name");
