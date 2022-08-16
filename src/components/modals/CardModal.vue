@@ -22,7 +22,7 @@
           :style="[dynamicDescriptionHeight]"
           placeholder="Descrição do cartão..."
           v-model="cardStore.getCard.description"
-          class="description w-full border-2 border-gray-800 bg-transparent outline-2 outline-blue-400 pt-2 pl-2 font-bold overflow-hidden break-words resize-none"
+          class="description w-full border-2 border-gray-800 bg-transparent outline-2 outline-blue-400 pt-2 pl-2 overflow-hidden break-words resize-none"
           id="inputDescriptionCard"
         />
       </div>
