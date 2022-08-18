@@ -28,7 +28,7 @@
       type="submit"
       :value="$t('components.forms.boards.registerForm.buttons.register')"
       class="btn btn-primary"
-      id="btn_login"
+      id="btn_register_board"
     />
   </form>
 </template>

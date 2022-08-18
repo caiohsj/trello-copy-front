@@ -1,6 +1,6 @@
 <template>
   <div class="boards-view">
-    <register-form @submit="handleSubmit" />
+    <register-board-form @submit="handleSubmit" />
     <div class="boards-list">
       <div
         v-for="board in boardStore.getBoards"
@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { useBoardStore } from "@/stores/board";
-import RegisterForm from "@/components/forms/boards/RegisterForm.vue";
+import RegisterBoardForm from "@/components/forms/boards/RegisterBoardForm.vue";
 import type { Board } from "@/types/models/Board";
 import { useRouter } from "vue-router";
 

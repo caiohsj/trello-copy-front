@@ -5,7 +5,7 @@
         {{ $t("views.userRegisterView.cardForm.title") }}
       </h1>
 
-      <register-form @submit="handleSignIn" />
+      <register-user-form @submit="handleSignIn" />
 
       <router-link :to="{ name: 'signIn' }" class="link">
         {{ $t("views.userRegisterView.cardForm.linkToLogin") }}
@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { useUserStore } from "../stores/user";
 import { RouterLink } from "vue-router";
-import RegisterForm from "@/components/forms/users/RegisterForm.vue";
+import RegisterUserForm from "@/components/forms/users/RegisterUserForm.vue";
 import type { User } from "@/types/models/User";
 
 const userStore = useUserStore();
