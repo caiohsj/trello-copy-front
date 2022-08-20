@@ -8,7 +8,7 @@
       <textarea
         @input="setTitleHeight"
         :style="[dynamicTitleHeight]"
-        placeholder="Titulo do cartão"
+        :placeholder="$t('components.modals.cardModal.placeholders.title')"
         v-model="cardStore.getCard.title"
         class="w-full ease-in-out duration-300 outline-2 focus:outline-blue-400 bg-transparent outline-none p-2 font-bold overflow-hidden break-words resize-none"
         id="inputTitleCard"
@@ -20,7 +20,9 @@
         <textarea
           @input="setDescriptionHeight"
           :style="[dynamicDescriptionHeight]"
-          placeholder="Descrição do cartão..."
+          :placeholder="
+            $t('components.modals.cardModal.placeholders.description')
+          "
           v-model="cardStore.getCard.description"
           class="description w-full border-2 border-gray-800 bg-transparent outline-2 outline-blue-400 pt-2 pl-2 overflow-hidden break-words resize-none"
           id="inputDescriptionCard"
@@ -31,7 +33,7 @@
         @click="handleSaveCard"
         class="rounded-md bg-blue-500 text-white py-2 px-8"
       >
-        Salvar
+        {{ $t("components.modals.cardModal.saveButton") }}
       </button>
     </div>
   </base-modal>

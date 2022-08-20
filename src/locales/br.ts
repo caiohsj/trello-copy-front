@@ -48,6 +48,15 @@ export default {
         },
       },
     },
+    modals: {
+      cardModal: {
+        placeholders: {
+          title: "Titulo do cartão",
+          description: "Descrição do cartão...",
+        },
+        saveButton: "Salvar",
+      },
+    },
   },
   views: {
     loginView: {
