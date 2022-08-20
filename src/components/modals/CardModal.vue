@@ -15,7 +15,9 @@
       />
 
       <div class="mt-6">
-        <label>Descrição</label>
+        <label>
+          {{ $t("components.modals.cardModal.labels.description") }}
+        </label>
 
         <textarea
           @input="setDescriptionHeight"

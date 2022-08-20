@@ -54,6 +54,9 @@ export default {
           title: "Titulo do cartão",
           description: "Descrição do cartão...",
         },
+        labels: {
+          description: "Descrição",
+        },
         saveButton: "Salvar",
       },
     },
