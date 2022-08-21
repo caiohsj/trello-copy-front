@@ -78,6 +78,9 @@ export default {
     homeView: {
       title: "Gerencie seus projetos de forma simples",
     },
+    boardView: {
+      addCard: "Adicionar cartão",
+    },
   },
   stores: {
     board: {
