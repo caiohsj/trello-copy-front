@@ -50,7 +50,6 @@ const handleLogout = () => {
   width: 100%;
   align-items: center;
   background-color: #74b9ff;
-  opacity: 0.7;
 
   .title {
     text-decoration: none;
