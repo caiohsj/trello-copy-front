@@ -34,10 +34,10 @@ export const useColumnStore = defineStore({
           });
       }
     },
-    fetchColumn(id: number) {
-      ColumnResource.show(id)
-        .then((response) => {
-          this.$patch((state) => (state.column = response));
+    destroyColumn(id: number, indexColumn: number) {
+      ColumnResource.destroy(id)
+        .then(() => {
+          useBoardStore().destroyBoardColumn(indexColumn);
         })
         .catch((err) => useToastStore().showToast(err));
     },

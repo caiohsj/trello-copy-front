@@ -11,4 +11,7 @@ export const ColumnResource = {
   show(id: number) {
     return http.get(`/api/v1/columns/${id}`);
   },
+  destroy(id: number) {
+    return http.delete(`/api/v1/columns/${id}`);
+  },
 };

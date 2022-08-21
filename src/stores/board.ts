@@ -73,6 +73,9 @@ export const useBoardStore = defineStore({
     setColumnCard(indexColumn: number, indexCard: number, card: Card) {
       this.board.columns[indexColumn].cards[indexCard] = card;
     },
+    destroyBoardColumn(indexColumn: number) {
+      this.board.columns.splice(indexColumn, 1);
+    },
     destroyColumnCard(indexColumn: number, indexCard: number) {
       this.board.columns[indexColumn].cards.splice(indexCard, 1);
     },

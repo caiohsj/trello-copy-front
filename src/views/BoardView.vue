@@ -11,13 +11,19 @@
           v-for="(column, indexColumn) in boardStore.getBoard.columns"
           :key="column.id"
         >
-          <input
-            @keyup.enter="handleSaveColumn($event, column, indexColumn)"
-            v-model="column.title"
-            class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
-            type="text"
-            id="inputNameColumn"
-          />
+          <div class="flex">
+            <input
+              @keyup.enter="handleSaveColumn($event, column, indexColumn)"
+              v-model="column.title"
+              class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
+              type="text"
+              id="inputNameColumn"
+            />
+            <icon-trash
+              @click="handleDestroyColumn(column.id, indexColumn)"
+              class="ease-in-out duration-200 fill-red-500 w-4 hover:fill-red-300 cursor-pointer"
+            />
+          </div>
 
           <card-column
             v-for="(card, indexCard) in column.cards"
@@ -30,7 +36,7 @@
             @click="addCard(indexColumn)"
             class="pl-2 w-full text-left hover:bg-slate-600 hover:text-white rounded-md"
           >
-            + Adicionar cartão
+            + {{ $t("views.boardView.addCard") }}
           </button>
         </div>
         <button
@@ -56,6 +62,7 @@ import { useRoute } from "vue-router";
 import CardColumn from "@/components/CardColumn.vue";
 import CardModal from "@/components/modals/CardModal.vue";
 import type { Card } from "@/types/models/Card";
+import IconTrash from "@/components/icons/iconTrash.vue";
 
 const boardStore = useBoardStore();
 const columnStore = useColumnStore();
@@ -85,6 +92,10 @@ const addCard = (indexColumn: number) => {
 const handleSaveColumn = (e: any, column: Column, index: number) => {
   e.target.blur();
   columnStore.saveColumn(column, index);
+};
+
+const handleDestroyColumn = (id: number, index: number) => {
+  columnStore.destroyColumn(id, index);
 };
 
 const cardColumnClicked = (card: Card, indexCard: number, indexColumn: number) => {
