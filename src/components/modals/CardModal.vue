@@ -7,6 +7,7 @@
 
       <textarea
         @input="setTitleHeight"
+        @focus="setTitleHeight"
         :style="[dynamicTitleHeight]"
         :placeholder="$t('components.modals.cardModal.placeholders.title')"
         v-model="cardStore.getCard.title"
@@ -21,12 +22,13 @@
 
         <textarea
           @input="setDescriptionHeight"
+          @focus="setDescriptionHeight"
           :style="[dynamicDescriptionHeight]"
           :placeholder="
             $t('components.modals.cardModal.placeholders.description')
           "
           v-model="cardStore.getCard.description"
-          class="description w-full border-2 border-gray-800 bg-transparent outline-2 outline-blue-400 pt-2 pl-2 overflow-hidden break-words resize-none"
+          class="description w-full ease-in-out duration-300 border-2 border-gray-800 bg-transparent outline-2 outline-blue-400 pt-2 pl-2 overflow-hidden break-words resize-none"
           id="inputDescriptionCard"
         />
       </div>
