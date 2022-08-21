@@ -6,7 +6,7 @@
 
     <div class="menu">
       <ul class="menu-items">
-        <li class="item flex">
+        <li class="item">
           <router-link :to="{ name: 'boards' }" class="menu-link">
             {{ $t("components.navs.navBar.menuItems.boards") }}
           </router-link>
@@ -17,6 +17,7 @@
         <img :src="placeholder" class="avatar" />
 
         <div class="actions">
+          <p class="font-extrabold text-lime-100 whitespace-nowrap">{{ sessionStore.getCurrentUser.name }}</p>
           <a class="action" @click="handleLogout">
             {{ $t("components.navs.navBar.profile.actions.logout") }}
           </a>
@@ -29,7 +30,9 @@
 <script lang="ts" setup>
 import { RouterLink } from "vue-router";
 import placeholder from "@/assets/user_placeholder.png";
+import { useSessionStore } from "@/stores/session";
 
+const sessionStore = useSessionStore();
 const emit = defineEmits(["logout"]);
 
 const props = defineProps({
@@ -68,6 +71,9 @@ const handleLogout = () => {
       width: 100%;
 
       .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .menu-link {
           padding: 10px 20px;
           margin-right: 2px;
@@ -100,7 +106,7 @@ const handleLogout = () => {
 
         .actions {
           display: block;
-          width: 140px;
+          width: fit-content;
           background-color: #2d3436;
           position: absolute;
           right: 0;
