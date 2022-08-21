@@ -37,6 +37,13 @@
       >
         {{ $t("components.modals.cardModal.saveButton") }}
       </button>
+
+      <button
+        @click="handleDestroyCard"
+        class="rounded-md bg-red-500 text-white py-2 px-8 ml-2"
+      >
+        {{ $t("components.modals.cardModal.deleteButton") }}
+      </button>
     </div>
   </base-modal>
 </template>
@@ -52,6 +59,10 @@ const cardStore = useCardStore();
 
 const handleSaveCard = () => {
   cardStore.saveCard();
+};
+
+const handleDestroyCard = () => {
+  cardStore.destroyCurrentCard();
 };
 
 const setTitleHeight = (e: any) => {

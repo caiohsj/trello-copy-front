@@ -58,6 +58,7 @@ export default {
           description: "Descrição",
         },
         saveButton: "Salvar",
+        deleteButton: "Excluir",
       },
     },
   },

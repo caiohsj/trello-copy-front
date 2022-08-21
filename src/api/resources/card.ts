@@ -11,4 +11,7 @@ export const CardResource = {
   show(id: number) {
     return http.get(`/api/v1/cards/${id}`);
   },
+  destroy(id: number) {
+    return http.delete(`/api/v1/cards/${id}`);
+  },
 };

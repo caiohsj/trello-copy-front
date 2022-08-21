@@ -51,6 +51,22 @@ export const useCardStore = defineStore({
         })
         .catch((err) => useToastStore().showToast(err));
     },
+    destroyCurrentCard() {
+      CardResource.destroy(this.card.id)
+        .then(() => {
+          this.setCard({
+            id: 0,
+            title: "",
+            description: "",
+            column_id: 0,
+          });
+          useBoardStore().destroyColumnCard(this.indexColumn, this.indexCard);
+          this.setIndexCard(0);
+          this.setIndexColumn(0);
+          this.setShowCardModal(false);
+        })
+        .catch((err) => useToastStore().showToast(err));
+    },
     setShowCardModal(show: boolean) {
       this.showCardModal = show;
     },

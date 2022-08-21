@@ -5,7 +5,6 @@ import type { Column } from "@/types/models/Column";
 import type { Card } from "@/types/models/Card";
 import { useToastStore } from "./toast";
 import type { StateBoard } from "@/types/stores/StateBoard";
-import i18n from "@/locales";
 
 export const useBoardStore = defineStore({
   id: "board",
@@ -69,10 +68,13 @@ export const useBoardStore = defineStore({
       });
     },
     setBoardColumn(index: number, column: Column) {
-      this.$state.board.columns[index] = column;
+      this.board.columns[index] = column;
     },
     setColumnCard(indexColumn: number, indexCard: number, card: Card) {
-      this.$state.board.columns[indexColumn].cards[indexCard] = card;
+      this.board.columns[indexColumn].cards[indexCard] = card;
+    },
+    destroyColumnCard(indexColumn: number, indexCard: number) {
+      this.board.columns[indexColumn].cards.splice(indexCard, 1);
     },
   },
 });
