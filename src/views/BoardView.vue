@@ -25,7 +25,7 @@
             />
           </div>
 
-          <div class="overflow-y-scroll">
+          <div class="overflow-y-auto">
             <card-column
               v-for="(card, indexCard) in column.cards"
               @clicked="cardColumnClicked(card, indexCard, indexColumn)"
