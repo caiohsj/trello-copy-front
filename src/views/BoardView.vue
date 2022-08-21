@@ -2,16 +2,16 @@
   <div
     v-if="boardStore.getBoard"
     :style="background"
-    class="board-view w-full relative overflow-x-auto bg-cover bg-no-repeat"
+    class="board-view w-full overflow-y-hidden overflow-x-auto bg-cover bg-no-repeat"
   >
-    <div class="absolute bottom-0 top-0 p-4">
+    <div class="bottom-0 top-0 p-4">
       <section class="flex gap-2">
         <div
           class="column bg-gray-200 rounded-md px-4 pb-2"
           v-for="(column, indexColumn) in boardStore.getBoard.columns"
           :key="column.id"
         >
-          <div class="flex">
+          <div class="flex" style="height: 10%">
             <input
               @keyup.enter="handleSaveColumn($event, column, indexColumn)"
               v-model="column.title"
@@ -25,12 +25,14 @@
             />
           </div>
 
-          <card-column
-            v-for="(card, indexCard) in column.cards"
-            @clicked="cardColumnClicked(card, indexCard, indexColumn)"
-            :key="card.id"
-            :item="card"
-          />
+          <div class="overflow-y-scroll">
+            <card-column
+              v-for="(card, indexCard) in column.cards"
+              @clicked="cardColumnClicked(card, indexCard, indexColumn)"
+              :key="card.id"
+              :item="card"
+            />
+          </div>
 
           <button
             @click="addCard(indexColumn)"
@@ -111,9 +113,12 @@ const cardColumnClicked = (card: Card, indexCard: number, indexColumn: number) =
   height: calc(100vh - 52px);
 
   .column {
+    display: flex;
+    flex-direction: column;
     min-width: 300px;
     max-width: 320px;
     height: fit-content;
+    max-height: calc(100vh - 100px);
   }
 }
 </style>
