@@ -5,6 +5,7 @@ import type { Column } from "@/types/models/Column";
 import type { Card } from "@/types/models/Card";
 import { useToastStore } from "./toast";
 import type { StateBoard } from "@/types/stores/StateBoard";
+import i18n from "@/locales";
 
 export const useBoardStore = defineStore({
   id: "board",
@@ -61,7 +62,7 @@ export const useBoardStore = defineStore({
       this.$patch((state) => {
         state.board.columns[indexColumn].cards.push({
           id: 0,
-          title: "",
+          title: i18n.global.t("stores.board.card.title", { column: state.board.columns[indexColumn].title }),
           description: "",
           column_id: state.board.columns[indexColumn].id,
         });
