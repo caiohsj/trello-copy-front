@@ -79,5 +79,16 @@ export const useBoardStore = defineStore({
     destroyColumnCard(indexColumn: number, indexCard: number) {
       this.board.columns[indexColumn].cards.splice(indexCard, 1);
     },
+    changeCardToColumn(
+      indexCard: number,
+      oldIndexColumn: number,
+      newIndexColumn: number,
+      card: Card
+    ) {
+      this.$patch((state) => {
+        state.board.columns[newIndexColumn].cards.push(card);
+        this.destroyColumnCard(oldIndexColumn, indexCard);
+      });
+    },
   },
 });

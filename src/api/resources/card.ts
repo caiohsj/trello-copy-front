@@ -8,6 +8,9 @@ export const CardResource = {
   update(card: Card) {
     return http.put(`/api/v1/cards/${card.id}`, card);
   },
+  changeColumn(id: number, column_id: number) {
+    return http.put(`/api/v1/cards/${id}/change_column`, { column_id });
+  },
   show(id: number) {
     return http.get(`/api/v1/cards/${id}`);
   },

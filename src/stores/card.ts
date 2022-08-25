@@ -44,6 +44,26 @@ export const useCardStore = defineStore({
           });
       }
     },
+    changeColumn(
+      card: Card,
+      columnId: number,
+      indexCard: number,
+      oldIndexColumn: number,
+      newIndexColumn: number
+    ) {
+      CardResource.changeColumn(card.id, columnId)
+        .then(() => {
+          useBoardStore().changeCardToColumn(
+            indexCard,
+            oldIndexColumn,
+            newIndexColumn,
+            card
+          );
+        })
+        .catch((err) => {
+          useToastStore().showToast(err);
+        });
+    },
     fetchCard(id: number) {
       CardResource.show(id)
         .then((response) => {

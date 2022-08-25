@@ -25,10 +25,16 @@
             />
           </div>
 
-          <div class="overflow-y-auto">
+          <div
+            class="overflow-y-auto"
+            @dragover.prevent="handleDragOver"
+            @drop.prevent="handleDrop($event, column, indexColumn)"
+          >
             <card-column
               v-for="(card, indexCard) in column.cards"
+              @dragstart="handleDragStart($event, card, indexCard, indexColumn)"
               @clicked="cardColumnClicked(card, indexCard, indexColumn)"
+              :draggable="true"
               :key="card.id"
               :item="card"
             />
@@ -100,11 +106,44 @@ const handleDestroyColumn = (id: number, index: number) => {
   columnStore.destroyColumn(id, index);
 };
 
-const cardColumnClicked = (card: Card, indexCard: number, indexColumn: number) => {
+const cardColumnClicked = (
+  card: Card,
+  indexCard: number,
+  indexColumn: number
+) => {
   cardStore.setCard(card);
   cardStore.setIndexCard(indexCard);
   cardStore.setIndexColumn(indexColumn);
   cardStore.setShowCardModal(true);
+};
+
+const handleDragStart = (
+  e: any,
+  card: Card,
+  indexCard: number,
+  indexColumn: number
+) => {
+  e.dropEffect = "move";
+  e.dataTransfer.setData("card", JSON.stringify(card));
+  e.dataTransfer.setData("indexCard", indexCard);
+  e.dataTransfer.setData("oldIndexColumn", indexColumn);
+};
+
+const handleDragOver = (e: any) => {
+  e.dataTransfer.dropEffect = "move";
+};
+
+const handleDrop = (e: any, column: Column, newIndexColumn: number) => {
+  const card = JSON.parse(e.dataTransfer.getData("card"));
+  const indexCard = e.dataTransfer.getData("indexCard");
+  const oldIndexColumn = e.dataTransfer.getData("oldIndexColumn");
+  cardStore.changeColumn(
+    card,
+    column.id,
+    indexCard,
+    oldIndexColumn,
+    newIndexColumn
+  );
 };
 </script>
 
