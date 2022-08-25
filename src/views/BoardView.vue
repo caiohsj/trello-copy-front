@@ -15,9 +15,10 @@
             <input
               @keyup.enter="handleSaveColumn($event, column, indexColumn)"
               v-model="column.title"
+              :placeholder="$t('views.boardView.placeholders.nameColumn')"
               class="ease-in-out duration-100 w-full focus:border-b-2 border-gray-800 bg-transparent outline-none pt-2 pl-2 font-bold"
               type="text"
-              id="inputNameColumn"
+              :id="`inputNameColumn_${indexColumn}`"
             />
             <icon-trash
               @click="handleDestroyColumn(column.id, indexColumn)"
@@ -25,13 +26,11 @@
             />
           </div>
 
-          <div
-            class="overflow-y-auto"
-            @dragover.prevent="handleDragOver"
-            @drop.prevent="handleDrop($event, column, indexColumn)"
-          >
+          <div class="overflow-y-auto">
             <card-column
               v-for="(card, indexCard) in column.cards"
+              @dragover.prevent="handleDragOver"
+              @drop.prevent="handleDrop($event, column, indexColumn)"
               @dragstart="handleDragStart($event, card, indexCard, indexColumn)"
               @clicked="cardColumnClicked(card, indexCard, indexColumn)"
               :draggable="true"

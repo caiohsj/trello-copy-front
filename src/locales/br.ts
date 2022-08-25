@@ -80,6 +80,9 @@ export default {
     },
     boardView: {
       addCard: "Adicionar cartão",
+      placeholders: {
+        nameColumn: "Nome da coluna...",
+      },
     },
   },
   stores: {
